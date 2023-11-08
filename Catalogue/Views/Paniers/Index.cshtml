@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Catalogue.Models.Panier>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Panier</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Image
+            </th>
+            <th>
+                Article
+            </th>
+            <th>
+                Taille / Format
+            </th>
+            <th>
+                Quantité
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Photo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomProduit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Taille)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuantiteEnInventaire)
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+
+</table>
+<div>
+    <a asp-action="Achat" role="button">Acheter!</a>
+</div>
